@@ -1,4 +1,4 @@
-  GNU nano 8.2                                             403.sh                                                       #!/bin/bash
+GNU nano 8.2                                             403.sh                                                       #!/bin/bash
 
 green="\e[32m"
 red="\e[31m"
