@@ -1,4 +1,4 @@
-GNU nano 8.2                                             403.sh                                                       #!/bin/bash
+#!/bin/bash
 
 green="\e[32m"
 red="\e[31m"
@@ -20,6 +20,24 @@ remote_file="index.php"
 raw_url="https://raw.githubusercontent.com/emenmousavi/forbidden_403/main/index.php"
 
 echo -e "${yellow}🔍 Checking if $remote_file exists on the server...${reset}"
-                                                   [ Read 125 lines ]
-^G Help        ^O Write Out   ^F Where Is    ^K Cut         ^T Execute     ^C Location    M-U Undo       M-A Set Mark
-^X Exit        ^R Read File   ^\ Replace     ^U Paste       ^J Justify     ^/ Go To Line  M-E Redo       M-6 Copy
+
+# Check if the file exists on the server
+sftp -P "$port" "$username@$host" <<EOF
+ls $remote_dir/$remote_file
+EOF
+
+if [ $? -eq 0 ]; then
+    echo -e "${green}✅ $remote_file exists on the server.${reset}"
+else
+    echo -e "${red}❌ $remote_file does not exist on the server. Uploading...${reset}"
+    
+    # Download the file from the raw URL and upload it to the server
+    curl -o /tmp/$remote_file $raw_url
+    sftp -P "$port" "$username@$host" <<EOF
+    put /tmp/$remote_file $remote_dir/$remote_file
+EOF
+    echo -e "${green}✅ $remote_file has been uploaded to the server.${reset}"
+fi
+
+# Clean up
+rm /tmp/$remote_file
