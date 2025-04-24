@@ -21,7 +21,6 @@ raw_url="https://raw.githubusercontent.com/emenmousavi/forbidden_403/main/index.
 
 echo -e "${yellow}🔍 Checking if $remote_file exists on the server...${reset}"
 
-# Check if the file exists on the server
 sftp -P "$port" "$username@$host" <<EOF
 ls $remote_dir/$remote_file
 EOF
@@ -29,15 +28,19 @@ EOF
 if [ $? -eq 0 ]; then
     echo -e "${green}✅ $remote_file exists on the server.${reset}"
 else
-    echo -e "${red}❌ $remote_file does not exist on the server. Uploading...${reset}"
+    echo -e "${red}❌ $remote_file does not exist on the server. Downloading and uploading...${reset}"
     
-    # Download the file from the raw URL and upload it to the server
     curl -o /tmp/$remote_file $raw_url
+    
+    if [ $? -ne 0 ]; then
+        echo -e "${red}❌ Failed to download $remote_file from $raw_url.${reset}"
+        exit 1
+    fi
+
     sftp -P "$port" "$username@$host" <<EOF
     put /tmp/$remote_file $remote_dir/$remote_file
 EOF
     echo -e "${green}✅ $remote_file has been uploaded to the server.${reset}"
 fi
 
-# Clean up
-rm /tmp/$remote_file
+rm -f /tmp/$remote_file
