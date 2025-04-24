@@ -10,7 +10,7 @@ This script automates the process of fixing the Forbidden 403 error by checking 
 - Provides user-friendly messages, including success and error notifications.
 
 ## Usage:
-1. Clone the repository or download the script `forbidden_403_fix.sh`.
+1. Clone the repository or download the script `fix_403.sh`.
 2. Give the script executable permissions:
     ```bash
     chmod +x fix_403.sh
