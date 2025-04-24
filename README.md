@@ -13,11 +13,11 @@ This script automates the process of fixing the Forbidden 403 error by checking 
 1. Clone the repository or download the script `forbidden_403_fix.sh`.
 2. Give the script executable permissions:
     ```bash
-    chmod +x forbidden_403_fix.sh
+    chmod +x fix_403.sh
     ```
 3. Run the script:
     ```bash
-    ./forbidden_403_fix.sh
+    ./fix_403.sh
     ```
 4. Follow the prompts to enter your SFTP credentials (host, username, and port).
 5. The script will check for the `index.php` file, download and upload it if necessary.
