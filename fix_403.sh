@@ -17,7 +17,7 @@ read -p "👤 Enter the SFTP username: " username
 
 remote_dir="/home/wplive/web/wp-live"
 remote_file="index.php"
-raw_url="https://raw.githubusercontent.com/emenmousavi/forbidden_403/main/index.php"
+raw_url="https://raw.githubusercontent.com/WordPress/WordPress/master/index.php"
 
 echo -e "${yellow}🔍 Checking if $remote_file exists on the server...${reset}"
 
