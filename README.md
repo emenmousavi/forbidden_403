@@ -16,7 +16,7 @@ Please run:
     ```
 The requirements.txt includes the following Python libraries:
 - paramiko: For SFTP file transfer and SSH communication.
-- requests: To download the index.php file from GitHub.
+- requests: To download the index.php file.
 
 ## Usage:
 1. Clone the repository or download the script `run.py`.
