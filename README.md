@@ -14,6 +14,9 @@ Please run:
     ```
     pip install -r requirements.txt
     ```
+The requirements.txt includes the following Python libraries:
+- paramiko: For SFTP file transfer and SSH communication.
+- requests: To download the index.php file from GitHub.
 
 ## Usage:
 1. Clone the repository or download the script `run.py`.
@@ -21,10 +24,6 @@ Please run:
     ```bash
     python3 run.py
     ```
-The requirements.txt includes the following Python libraries:
-- paramiko: For SFTP file transfer and SSH communication.
-- requests: To download the index.php file from GitHub.
-
 4. Follow the prompts to enter your SFTP credentials (host, username, and port).
 5. The script will check for the `index.php` file, download and upload it if necessary.
 
