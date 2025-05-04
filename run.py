@@ -2,7 +2,6 @@ import os
 import paramiko
 import requests
 
-# ===== 👨‍💻 Made By Amin Mousavi =====
 def print_banner():
     print("="*60)
     print(" 🔐  Smart 403 Forbidden Error Fixer - By Amin Mousavi  ")
@@ -28,7 +27,6 @@ def download_index_php(local_path):
 def main():
     print_banner()
 
-    # ==== 🔧 Input Credentials ====
     host = input("🌐 Enter SFTP Host: ")
     port = int(input("🔢 Enter Port (e.g. 55100): "))
     username = input("👤 Enter Username: ")
@@ -37,7 +35,6 @@ def main():
     local_file = "index.php"
     remote_path = "/home/wplive/web/wp-live/index.php"
 
-    # Make sure index.php exists locally or download it
     if not os.path.exists(local_file):
         success = download_index_php(local_file)
         if not success:
@@ -74,6 +71,8 @@ def main():
 
     except Exception as e:
         print(f"❌ Error: {str(e)}")
+
+    input("\nPress Enter to exit...")
 
 if __name__ == "__main__":
     main()
