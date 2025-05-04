@@ -10,15 +10,18 @@ This script automates the process of fixing the Forbidden 403 error by checking 
 - Provides user-friendly messages, including success and error notifications.
 
 ## Usage:
-1. Clone the repository or download the script `fix_403.sh`.
-2. Give the script executable permissions:
+1. Clone the repository or download the script `run.py`.
+2. Run the script:
     ```bash
-    chmod +x fix_403.sh
+    python3 run.py
     ```
-3. Run the script:
-    ```bash
-    ./fix_403.sh
+
+## Requirements
+Please run:
     ```
+    pip install -r requirements.txt
+    ```
+
 4. Follow the prompts to enter your SFTP credentials (host, username, and port).
 5. The script will check for the `index.php` file, download and upload it if necessary.
 
